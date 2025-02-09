@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omegle & Monkey Exclusive Content</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=https://www.paypal.com/ncp/payment/HPRHG7KRTH4QN"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Exclusive SnapGod Folder 🔥</h1>
+        <p>Unlock premium content instantly! Purchase your access securely and get exclusive videos.</p>
+        
+        <div class="preview">
+            <h2>🎥 Content Preview</h2>
+            <video controls>
+                <source src="assets/videos/preview.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '35.00'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('✅ Payment successful! Your content is now accessible.');
+                    window.location.href = "https://yoursite.com/access.html";
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
